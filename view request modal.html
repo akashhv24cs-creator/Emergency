@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#723600",
+                    "tertiary-container": "#df7412",
+                    "surface-container-high": "#272a31",
+                    "surface-variant": "#32353c",
+                    "primary": "#adc6ff",
+                    "outline": "#8c909f",
+                    "error": "#ffb4ab",
+                    "secondary-container": "#571bc1",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-bright": "#363941",
+                    "tertiary": "#ffb786",
+                    "inverse-on-surface": "#2e3038",
+                    "on-secondary": "#3c0091",
+                    "tertiary-fixed-dim": "#ffb786",
+                    "surface-container-highest": "#32353c",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-surface": "#e1e2ec",
+                    "on-primary-fixed": "#001a42",
+                    "on-primary-container": "#00285d",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-dim": "#10131a",
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-container": "#1d2027",
+                    "on-tertiary-fixed": "#311400",
+                    "secondary": "#d0bcff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#005ac2",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#461f00",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e1e2ec",
+                    "on-background": "#e1e2ec",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "primary-container": "#4d8eff",
+                    "background": "#10131a",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-primary": "#002e6a",
+                    "surface-container-lowest": "#0b0e15",
+                    "on-tertiary": "#502400",
+                    "surface-container-low": "#191b23",
+                    "surface": "#10131a",
+                    "on-secondary-container": "#c4abff",
+                    "surface-tint": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "margin": "24px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"],
+                    "mono-data": ["Space Grotesk"],
+                    "label-caps": ["Space Grotesk"],
+                    "h2": ["Space Grotesk"],
+                    "h1": ["Space Grotesk"],
+                    "body-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "mono-data": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ping-animation {
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% { transform: scale(2.5); opacity: 0; }
+        }
+        .glow-blue { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+        .glow-red { box-shadow: 0 0 15px rgba(239, 68, 68, 0.3); }
+        .glow-green { box-shadow: 0 0 15px rgba(34, 197, 94, 0.3); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="bg-[#0D1117] text-[#3B82F6] font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold docked full-width top-0 border-b border-[#30363D] flex justify-between items-center w-full px-6 py-4 fixed z-40">
+<div class="text-xl font-black tracking-tighter text-[#3B82F6]">SahaySathi</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined hover:bg-[#161B22] hover:scale-[1.02] transition-all duration-150 p-2 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined hover:bg-[#161B22] hover:scale-[1.02] transition-all duration-150 p-2 cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Background Map Context (Simulated) -->
+<main class="min-h-screen pt-20 pb-16 relative">
+<div class="absolute inset-0 z-0 overflow-hidden grayscale contrast-125 opacity-40">
+<img class="w-full h-full object-cover" data-alt="A detailed aerial satellite map view of an urban residential district with complex street patterns and buildings. The map is rendered in a high-contrast midnight blue and charcoal grey color scheme, characteristic of a technical command center interface. Minimalistic UI markers and subtle data overlays suggest a high-stakes monitoring environment. The lighting is low and cinematic, emphasizing the tactical nature of the disaster response platform." data-location="Bengaluru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYtHWFVQioWw_Hs3OQ2ZK3Lgb2BJr2MpKBtm3c2tEcOaSic2GJhI0AKmGeUAF2m9t3CtYO6jTnI747xcEiIOJIcY8ajl-gj7zPKo4xrBLvwhHZ9ANt5NaZv2vr-IxwZdxjvmfkViPtVwGpkM1g9mFhczqcdsZCnH8-h2o7RjXoFf2_ALT9QBcID0HdTchWrszELCkqOEh0zrH2M-1aEw3PNYujGwfjqJSRqwNFYPS27khLdsE7bDoqwwhsoM8wAANiYqXYzdMTr5jK"/>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-[#0D1117]/80 backdrop-blur-sm flex items-center justify-center p-md">
+<!-- Details Modal -->
+<div class="bg-[#161B22] border border-[#30363D] w-full max-w-2xl overflow-hidden glow-blue transition-transform duration-150">
+<!-- Modal Header -->
+<div class="px-md py-sm border-b border-[#30363D] flex justify-between items-center bg-[#0D1117]">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-error" data-icon="medical_services">medical_services</span>
+<h2 class="font-h3 text-h3 uppercase tracking-tight">Emergency: Medical Rescue</h2>
+</div>
+<div class="bg-error-container/10 border border-error px-sm py-xs">
+<span class="text-label-caps text-error font-bold uppercase tracking-widest">CRITICAL PRIORITY</span>
+</div>
+</div>
+<div class="p-md space-y-md">
+<!-- Photo & Location Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<div class="md:col-span-4">
+<div class="aspect-square border border-[#30363D] overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A gritty, high-contrast photograph of a suburban residential street completely submerged in murky floodwaters. The scene depicts the devastating reality of a natural disaster, with parked cars partially underwater and the reflections of grey, overcast skies on the surface. The visual style is documentary-like and urgent, using a muted palette of dark blues and browns to convey the somber atmosphere of the emergency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkb0_nVAP7aE5WEroNuBAvFrSehudCz-VFSsHvybBy89uKenAIK5Sq4Dmfv_rldLDh6xkMkSDSptVnbyANaOviSXtYyVP0-usPuXe36mLVamwNGz8SceOnzGazuXlQ5F3cdeJ3xJTGxngCg4GwDvrIhBIRrepyHuXoheHnPocxgv6n0wt1w65l5iBdRip8PU2jX1eiFRWsXXwKh9GbeJhcC3sJBAcVtWP1uUsl5RmhZGPiYiWojGIvHD8wsqtGoHXoDTGCTmePxY7K"/>
+</div>
+</div>
+<div class="md:col-span-8 flex flex-col justify-between">
+<div class="space-y-xs">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-mono-data text-mono-data uppercase">📍 Koramangala, Bengaluru (1.2km away)</span>
+</div>
+<p class="text-body-md text-on-surface-variant">
+                                    Severe flooding in residential area. Elderly couple trapped on second floor. Immediate medical assistance required for oxygen support.
+                                </p>
+</div>
+<div class="mt-md bg-surface-container-low p-sm border border-[#30363D] flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="relative flex h-3 w-3">
+<span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-[#3B82F6] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-[#3B82F6]"></span>
+</div>
+<span class="font-label-caps text-on-surface uppercase tracking-widest">3 / 10 Responders heading here</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border border-[#161B22] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-xs" data-icon="person">person</span>
+</div>
+<div class="w-8 h-8 rounded-full border border-[#161B22] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-xs" data-icon="person">person</span>
+</div>
+<div class="w-8 h-8 rounded-full border border-[#161B22] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-xs" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Details List -->
+<div class="grid grid-cols-2 gap-gutter border-t border-[#30363D] pt-md">
+<div class="space-y-xs">
+<span class="text-label-caps text-outline uppercase">Patient Status</span>
+<div class="font-mono-data text-on-surface">Critical / Oxygen Low</div>
+</div>
+<div class="space-y-xs">
+<span class="text-label-caps text-outline uppercase">Access Route</span>
+<div class="font-mono-data text-on-surface">Watercraft Required</div>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-h3 py-md uppercase tracking-widest glow-green active:scale-[0.97] transition-all duration-150 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="navigation" data-weight="fill">navigation</span>
+                        I'm On My Way
+                    </button>
+<button class="w-full border border-[#30363D] hover:bg-[#161B22] text-outline font-label-caps py-sm uppercase tracking-widest transition-all duration-150">
+                        View Full Incident Log
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop, but present per schema) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-[#0D1117] border-t border-[#30363D] shadow-[0_-4px_20px_rgba(0,0,0,0.5)] md:hidden">
+<div class="flex flex-col items-center justify-center text-gray-500 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest mt-1">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#3B82F6] drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] cursor-pointer">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest mt-1">SOS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

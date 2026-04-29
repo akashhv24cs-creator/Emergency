@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#8c909f",
+                      "on-tertiary-fixed": "#311400",
+                      "surface-variant": "#32353c",
+                      "surface-container-lowest": "#0b0e15",
+                      "on-tertiary-fixed-variant": "#723600",
+                      "on-secondary-container": "#c4abff",
+                      "surface-container-highest": "#32353c",
+                      "outline-variant": "#424754",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "secondary": "#d0bcff",
+                      "primary-fixed": "#d8e2ff",
+                      "primary-fixed-dim": "#adc6ff",
+                      "surface-bright": "#363941",
+                      "background": "#10131a",
+                      "error-container": "#93000a",
+                      "surface-dim": "#10131a",
+                      "on-secondary-fixed": "#23005c",
+                      "on-background": "#e1e2ec",
+                      "on-tertiary": "#502400",
+                      "on-surface-variant": "#c2c6d6",
+                      "primary": "#adc6ff",
+                      "surface-tint": "#adc6ff",
+                      "tertiary-fixed-dim": "#ffb786",
+                      "surface-container": "#1d2027",
+                      "on-primary-container": "#00285d",
+                      "inverse-on-surface": "#2e3038",
+                      "tertiary-fixed": "#ffdcc6",
+                      "secondary-fixed": "#e9ddff",
+                      "primary-container": "#4d8eff",
+                      "surface": "#10131a",
+                      "on-primary": "#002e6a",
+                      "secondary-container": "#571bc1",
+                      "on-surface": "#e1e2ec",
+                      "on-primary-fixed-variant": "#004395",
+                      "on-error": "#690005",
+                      "inverse-primary": "#005ac2",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "on-primary-fixed": "#001a42",
+                      "tertiary-container": "#df7412",
+                      "tertiary": "#ffb786",
+                      "inverse-surface": "#e1e2ec",
+                      "surface-container-high": "#272a31",
+                      "on-secondary": "#3c0091",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-container": "#461f00",
+                      "surface-container-low": "#191b23"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "base": "8px",
+                      "gutter": "16px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin": "24px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "h3": ["Space Grotesk"],
+                      "h1": ["Space Grotesk"],
+                      "label-caps": ["Space Grotesk"],
+                      "mono-data": ["Space Grotesk"],
+                      "body-md": ["Space Grotesk"],
+                      "h2": ["Space Grotesk"],
+                      "body-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "mono-data": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.ping-animate {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite
+    }
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2.5);
+        opacity: 0;
+        }
+    }
+.emergency-glow {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3)
+    }
+.map-container {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAeQkJofoChe912UCyCCsjwuK1YKEp2peVsZNOhGXV75chokh-ryRqWzH0x45TTp_PWyEEGwWPRP2B5y_thFzLNqAgi2rxgLKEGQ-cKkK9kbGvno6Xww2CFirPEfGfxemWdK8ZqPIQTE2sS3Z7WfrvyDaFtSr6L9YA6qBm2bPcw2xJl9qcVNCMeLH9puz_6Ai18Z-_0MCKVcsyykNH_kioEBuqGUyMIzZAMmZANVVC3gw9cqopgQftAQMAS3OW1ERWhjs2uL5u50v7d);
+    background-size: cover;
+    background-position: center
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden h-screen w-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-[#0D1117]/90 backdrop-blur-md text-[#3B82F6] font-['Space_Grotesk'] uppercase tracking-wider text-sm border-b border-[#30363D] shadow-2xl shadow-black/50 fixed top-0 z-50 flex justify-between items-center w-full px-6 h-16">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-bold text-[#3B82F6] tracking-tighter">SahaySathi</h1>
+<div class="hidden md:flex gap-6 ml-10">
+<a class="text-[#3B82F6] border-b-2 border-[#3B82F6] pb-1 font-medium transition-all duration-150" href="#">Map</a>
+<a class="text-[#8B949E] hover:scale-105 hover:text-white transition-all duration-150" href="#">Dispatch</a>
+<a class="text-[#8B949E] hover:scale-105 hover:text-white transition-all duration-150" href="#">Personnel</a>
+<a class="text-[#8B949E] hover:scale-105 hover:text-white transition-all duration-150" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:scale-105 transition-all text-[#8B949E]">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-105 transition-all text-[#8B949E]">account_circle</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-105 transition-all text-[#8B949E]">settings</span>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<nav class="fixed left-0 top-0 hidden md:flex flex-col h-full z-40 bg-[#0D1117] w-20 border-r border-[#30363D] pt-20 pb-6 items-center gap-8">
+<div class="flex flex-col gap-6 w-full items-center">
+<div class="bg-[#3B82F6]/10 text-[#3B82F6] p-3 rounded-lg border-l-4 border-[#3B82F6] active:scale-[0.98] transition-all cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<div class="text-[#8B949E] p-3 hover:bg-[#161B22] hover:text-white transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">emergency_share</span>
+</div>
+<div class="text-[#8B949E] p-3 hover:bg-[#161B22] hover:text-white transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div class="text-[#8B949E] p-3 hover:bg-[#161B22] hover:text-white transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">insights</span>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-6 w-full items-center">
+<span class="material-symbols-outlined text-[#8B949E] cursor-pointer hover:text-white transition-colors">help</span>
+<span class="material-symbols-outlined text-[#8B949E] cursor-pointer hover:text-white transition-colors">dns</span>
+</div>
+</nav>
+<!-- Map Canvas Area -->
+<main class="relative h-full w-full pt-16 md:pl-20">
+<!-- CartoDB Dark Matter Placeholder Map -->
+<div class="absolute inset-0 z-0 bg-[#0b0e15] overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 grayscale brightness-50" data-alt="A dark-themed satellite map of a dense urban environment at night, featuring a grid of streets illuminated by a dim, blue-toned glow. The visualization uses a high-contrast palette of deep blacks and tactical blues to represent a modern command center interface. Minimalist topographic details and subtle data overlays create a sense of technical precision and emergency readiness. The lighting is low-key with sharp, functional highlights that guide the eye across the digital terrain." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxi4L03S0HSEFvXJirGJRmtDt-F2vX3oVMvk64A4zLZrwoe9qQP_X_DfonIl_D6onEuik4d9WZCVLKsG0HfX4m9VAu0O1xrwcDvt5R-mdFGBkcJNO1FFFV1ygCCIAepA0fbTEwXWrrxi6vVsEMQ8fN3nQIPE7IohfK4UjH1NvzS2CrXWBzTjxuOOZA8gOnKnu-3vC3gM8kiH6AFInrSh-sNOZPVqOfOlRf-GeUXMwS66uYw6HNMYuBBoIbMGSafly2AJJ1nQFkEh9w"/>
+<!-- Map Pins Layer -->
+<!-- Red Pin (Critical) -->
+<div class="absolute top-[40%] left-[55%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="relative">
+<div class="absolute -inset-2 bg-error/30 rounded-full ping-animate"></div>
+<span class="material-symbols-outlined text-error text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<!-- Orange Pin (Medical) -->
+<div class="absolute top-[52%] left-[48%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10">
+<div class="relative">
+<div class="absolute -inset-1 bg-tertiary/20 rounded-full"></div>
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<!-- Blue Pin (Food) -->
+<div class="absolute top-[30%] left-[30%] -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<!-- Medical Emergency Popup (Active State) -->
+<div class="absolute top-[50%] left-[48%] -translate-x-1/2 -translate-y-[110%] z-20 w-80">
+<div class="bg-surface-container border border-outline-variant p-md rounded-lg shadow-2xl emergency-glow transition-all active:scale-[0.97]">
+<div class="flex justify-between items-start mb-base">
+<div>
+<span class="text-label-caps text-tertiary-fixed font-semibold uppercase tracking-widest bg-tertiary/10 px-2 py-1 rounded">Medical Emergency</span>
+<h3 class="text-body-lg font-h3 mt-2 text-on-surface">Oxygen Support Required</h3>
+</div>
+<span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-tighter">CRITICAL</span>
+</div>
+<p class="text-on-surface-variant text-mono-data mb-md">
+                        Elderly patient needs oxygen support and immediate cardiac monitoring. 3rd Floor, Flat 402.
+                    </p>
+<div class="mb-md">
+<div class="flex justify-between text-label-caps mb-xs">
+<span class="text-on-surface-variant">Volunteers En Route</span>
+<span class="text-primary">3/10</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<button class="w-full bg-[#10B981] hover:bg-[#059669] text-white font-h3 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-102 active:scale-95 shadow-lg shadow-emerald-900/20">
+<span class="material-symbols-outlined">directions_run</span>
+                        I'M ON MY WAY
+                    </button>
+<!-- Pointer Triangle -->
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface-container border-r border-b border-outline-variant rotate-45"></div>
+</div>
+</div>
+</div>
+<!-- Floating Controls (Top-Left) -->
+<div class="absolute top-gutter left-gutter z-30 flex flex-col gap-base">
+<div class="bg-surface-container/80 backdrop-blur-md border border-outline-variant p-4 rounded-xl w-64 shadow-xl">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#10B981] ping-animate"></div>
+<span class="text-label-caps text-on-surface-variant">Command Center</span>
+</div>
+<span class="text-mono-data font-bold text-primary">23 ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<button class="bg-primary-container text-on-primary-container text-label-caps py-2 rounded font-bold hover:scale-102 transition-all">ALL</button>
+<button class="bg-surface-variant text-on-surface-variant text-label-caps py-2 rounded hover:bg-outline-variant transition-all">RESCUE</button>
+<button class="bg-surface-variant text-on-surface-variant text-label-caps py-2 rounded hover:bg-outline-variant transition-all">MEDICAL</button>
+<button class="bg-surface-variant text-on-surface-variant text-label-caps py-2 rounded hover:bg-outline-variant transition-all">FOOD</button>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<span class="text-mono-data text-on-surface-variant">Heatmap Overlay</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- New Request Toast (Bottom Right) -->
+<div class="absolute bottom-gutter right-gutter z-30 transition-all">
+<div class="bg-surface-container-high border-l-4 border-error p-gutter rounded-lg shadow-2xl flex items-center gap-4 min-w-[300px]">
+<div class="bg-error/20 p-2 rounded">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+<div>
+<div class="text-label-caps text-error font-bold mb-1">NEW REQUEST NEARBY</div>
+<div class="text-on-surface font-semibold">Rescue Support Needed</div>
+<div class="text-mono-data text-on-surface-variant text-xs">2.4km • Just now</div>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-white">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Bottom Legend (Desktop Only) -->
+<div class="absolute bottom-gutter left-gutter z-30 hidden md:flex gap-4">
+<div class="bg-surface-container/60 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="text-label-caps text-on-surface-variant">Critical</span>
+</div>
+<div class="bg-surface-container/60 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-label-caps text-on-surface-variant">Medical</span>
+</div>
+<div class="bg-surface-container/60 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-caps text-on-surface-variant">Supplies</span>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full bg-[#0D1117]/90 backdrop-blur-md border-t border-[#30363D] z-50 flex justify-around items-center h-16">
+<button class="flex flex-col items-center text-[#3B82F6]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter">Map</span>
+</button>
+<button class="flex flex-col items-center text-[#8B949E]">
+<span class="material-symbols-outlined">emergency_share</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter">Dispatch</span>
+</button>
+<button class="flex flex-col items-center text-[#8B949E]">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter">Personnel</span>
+</button>
+<button class="flex flex-col items-center text-[#8B949E]">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter">Analytics</span>
+</button>
+</footer>
+</body></html>

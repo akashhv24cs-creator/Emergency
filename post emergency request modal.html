@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#723600",
+                    "tertiary-container": "#df7412",
+                    "surface-container-high": "#272a31",
+                    "surface-variant": "#32353c",
+                    "primary": "#adc6ff",
+                    "outline": "#8c909f",
+                    "error": "#ffb4ab",
+                    "secondary-container": "#571bc1",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-bright": "#363941",
+                    "tertiary": "#ffb786",
+                    "inverse-on-surface": "#2e3038",
+                    "on-secondary": "#3c0091",
+                    "tertiary-fixed-dim": "#ffb786",
+                    "surface-container-highest": "#32353c",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-surface": "#e1e2ec",
+                    "on-primary-fixed": "#001a42",
+                    "on-primary-container": "#00285d",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-dim": "#10131a",
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-container": "#1d2027",
+                    "on-tertiary-fixed": "#311400",
+                    "secondary": "#d0bcff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#005ac2",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#461f00",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e1e2ec",
+                    "on-background": "#e1e2ec",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "primary-container": "#4d8eff",
+                    "background": "#10131a",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-primary": "#002e6a",
+                    "surface-container-lowest": "#0b0e15",
+                    "on-tertiary": "#502400",
+                    "surface-container-low": "#191b23",
+                    "surface": "#10131a",
+                    "on-secondary-container": "#c4abff",
+                    "surface-tint": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "margin": "24px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"],
+                    "mono-data": ["Space Grotesk"],
+                    "label-caps": ["Space Grotesk"],
+                    "h2": ["Space Grotesk"],
+                    "h1": ["Space Grotesk"],
+                    "body-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "mono-data": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .emergency-glow {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+        .gradient-primary {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+        }
+        .ping-animation {
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#0D1117] text-on-surface font-body-md overflow-hidden">
+<!-- Background Dashboard (Blurred) -->
+<div class="fixed inset-0 z-0 flex flex-col blur-md grayscale opacity-40 pointer-events-none">
+<header class="flex justify-between items-center w-full px-6 py-4 bg-[#0D1117] border-b border-[#30363D]">
+<span class="text-xl font-black tracking-tighter text-[#3B82F6]">SahaySathi</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-gray-400">notifications</span>
+<span class="material-symbols-outlined text-gray-400">account_circle</span>
+</div>
+</header>
+<main class="flex-1 p-md grid grid-cols-12 gap-base">
+<div class="col-span-8 grid grid-cols-2 gap-base">
+<div class="h-64 bg-[#161B22] border border-[#30363D]"></div>
+<div class="h-64 bg-[#161B22] border border-[#30363D]"></div>
+<div class="col-span-2 h-96 bg-[#161B22] border border-[#30363D]"></div>
+</div>
+<div class="col-span-4 h-full bg-[#161B22] border border-[#30363D]"></div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-md">
+<!-- Main Modal Container -->
+<div class="w-full max-w-2xl bg-[#161B22] border border-[#30363D] shadow-2xl relative overflow-hidden">
+<!-- Modal Header -->
+<div class="flex justify-between items-center px-md py-sm border-b border-[#30363D]">
+<h2 class="font-h3 text-h3 text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[#EF4444] animate-pulse">emergency</span>
+                    New Emergency Request
+                </h2>
+<button class="text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="p-md space-y-md max-h-[819px] overflow-y-auto">
+<!-- Category Grid -->
+<div class="space-y-xs">
+<span class="text-label-caps font-label-caps text-outline uppercase">Select Crisis Category</span>
+<div class="grid grid-cols-3 gap-base">
+<!-- Rescue (Active) -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border-2 border-[#EF4444] emergency-glow rounded-sm group transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-[#EF4444] text-3xl" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<span class="font-label-caps text-on-surface">Rescue</span>
+</button>
+<!-- Medical -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border border-[#30363D] hover:border-[#3B82F6] hover:bg-[#161B22] transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-3xl">emergency</span>
+<span class="font-label-caps text-outline group-hover:text-on-surface">Medical</span>
+</button>
+<!-- Food -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border border-[#30363D] hover:border-[#3B82F6] hover:bg-[#161B22] transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-3xl">restaurant</span>
+<span class="font-label-caps text-outline group-hover:text-on-surface">Food</span>
+</button>
+<!-- Water -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border border-[#30363D] hover:border-[#3B82F6] hover:bg-[#161B22] transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-3xl">water_drop</span>
+<span class="font-label-caps text-outline group-hover:text-on-surface">Water</span>
+</button>
+<!-- Shelter -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border border-[#30363D] hover:border-[#3B82F6] hover:bg-[#161B22] transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-3xl">home</span>
+<span class="font-label-caps text-outline group-hover:text-on-surface">Shelter</span>
+</button>
+<!-- Other -->
+<button class="flex flex-col items-center justify-center gap-xs p-md bg-[#1d2027] border border-[#30363D] hover:border-[#3B82F6] hover:bg-[#161B22] transition-all duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-3xl">more_horiz</span>
+<span class="font-label-caps text-outline group-hover:text-on-surface">Other</span>
+</button>
+</div>
+</div>
+<!-- Description Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-end">
+<span class="text-label-caps font-label-caps text-outline uppercase">Situation Description</span>
+<span class="text-mono-data text-xs text-outline">128/300</span>
+</div>
+<textarea class="w-full h-24 bg-[#0D1117] border border-[#30363D] rounded-sm p-sm text-body-md focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none transition-all resize-none" placeholder="Describe your situation clearly...">Heavy flash flooding near the residential complex. Two elderly persons are trapped on the second floor. Need immediate extraction team and medical kits.</textarea>
+</div>
+<!-- AI Analysis Preview -->
+<div class="bg-[#1d2027] border-l-4 border-[#3B82F6] p-sm flex items-start gap-sm">
+<span class="material-symbols-outlined text-[#3B82F6] text-sm mt-1">auto_awesome</span>
+<div class="space-y-xs">
+<p class="text-mono-data text-on-surface-variant leading-tight">
+<span class="font-bold text-[#3B82F6]">AI Analysis:</span> 
+                            Critical · Estimated needs: 2 medical teams, ambulance
+                        </p>
+</div>
+</div>
+<!-- Location and Photo Upload Row -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Location -->
+<div class="space-y-xs">
+<span class="text-label-caps font-label-caps text-outline uppercase">Dispatch Location</span>
+<div class="flex items-center gap-xs p-sm bg-[#0D1117] border border-[#30363D] rounded-sm">
+<span class="material-symbols-outlined text-[#EF4444] text-lg">location_on</span>
+<span class="text-body-md truncate">Koramangala, Bengaluru</span>
+<a class="text-xs text-[#3B82F6] hover:underline ml-auto" href="#">Change</a>
+</div>
+</div>
+<!-- Photo Upload -->
+<div class="space-y-xs">
+<span class="text-label-caps font-label-caps text-outline uppercase">Visual Evidence</span>
+<div class="border-2 border-dashed border-[#30363D] rounded-sm p-sm flex items-center justify-between bg-[#161B22] hover:bg-[#1d2027] transition-colors cursor-pointer group">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface">upload_file</span>
+<span class="text-xs text-outline group-hover:text-on-surface">Drag photos here</span>
+</div>
+<button class="bg-[#30363D] px-base py-xs text-[10px] font-bold uppercase tracking-widest hover:bg-[#424754]">Browse</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-md bg-[#0D1117] border-t border-[#30363D] flex items-center justify-between">
+<div class="flex items-center gap-base">
+<div class="relative flex items-center justify-center">
+<div class="w-3 h-3 bg-[#3B82F6] rounded-full z-10"></div>
+<div class="absolute w-3 h-3 bg-[#3B82F6] rounded-full ping-animation"></div>
+</div>
+<span class="text-mono-data text-xs text-outline uppercase tracking-wider">System online · GPS Lock acquired</span>
+</div>
+<button class="gradient-primary text-white font-bold px-xl py-sm rounded-sm uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.97] transition-all duration-150 shadow-lg shadow-purple-500/20">
+                    Post Emergency Request
+                </button>
+</div>
+<!-- Grid Accents (Technical Aesthetic) -->
+<div class="absolute top-0 right-0 w-16 h-16 pointer-events-none opacity-20">
+<div class="absolute inset-0 border-t border-r border-outline"></div>
+<div class="absolute top-2 right-2 w-2 h-2 bg-outline"></div>
+</div>
+</div>
+</div>
+</body></html>

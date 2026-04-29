@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VANGUARD RESPONSE - Volunteer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#191b23",
+                        "on-tertiary-container": "#461f00",
+                        "tertiary-container": "#df7412",
+                        "tertiary": "#ffb786",
+                        "inverse-surface": "#e1e2ec",
+                        "surface-container-high": "#272a31",
+                        "on-secondary": "#3c0091",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#001a42",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005ac2",
+                        "secondary-container": "#571bc1",
+                        "on-surface": "#e1e2ec",
+                        "on-primary": "#002e6a",
+                        "surface": "#10131a",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-container": "#4d8eff",
+                        "inverse-on-surface": "#2e3038",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-container": "#1d2027",
+                        "on-primary-container": "#00285d",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "primary": "#adc6ff",
+                        "surface-tint": "#adc6ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-dim": "#10131a",
+                        "on-secondary-fixed": "#23005c",
+                        "on-background": "#e1e2ec",
+                        "on-tertiary": "#502400",
+                        "background": "#10131a",
+                        "error-container": "#93000a",
+                        "surface-bright": "#363941",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary": "#d0bcff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#424754",
+                        "surface-container-highest": "#32353c",
+                        "surface-variant": "#32353c",
+                        "surface-container-lowest": "#0b0e15",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-secondary-container": "#c4abff",
+                        "on-tertiary-fixed": "#311400",
+                        "outline": "#8c909f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"],
+                        "h1": ["Space Grotesk"],
+                        "mono-data": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ping-animation {
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#0D1117] text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="bg-[#0D1117] border-b border-[#30363D] flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50">
+<div class="flex items-center gap-base">
+<span class="text-lg font-black text-white tracking-tighter font-h3">SahaySathi</span>
+<div class="hidden md:flex ml-xl items-center space-x-gutter">
+<nav class="flex gap-gutter">
+<a class="text-[#3B82F6] border-b-2 border-[#3B82F6] font-['Space_Grotesk'] text-sm font-bold tracking-widest uppercase py-4" href="#">Dashboard</a>
+<a class="text-[#8B949E] hover:scale-[1.02] hover:text-white transition-all duration-150 font-['Space_Grotesk'] text-sm font-bold tracking-widest uppercase py-4" href="#">Missions</a>
+<a class="text-[#8B949E] hover:scale-[1.02] hover:text-white transition-all duration-150 font-['Space_Grotesk'] text-sm font-bold tracking-widest uppercase py-4" href="#">Map</a>
+</nav>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-[#8B949E] cursor-pointer hover:text-white">notifications</span>
+<span class="material-symbols-outlined text-[#8B949E] cursor-pointer hover:text-white">wifi_tethering</span>
+<span class="material-symbols-outlined text-[#8B949E] cursor-pointer hover:text-white">account_circle</span>
+</div>
+<button class="bg-error text-on-error font-label-caps px-4 py-1.5 rounded active:scale-[0.97] transition-transform shadow-[0_0_15px_rgba(239,68,68,0.3)]">SOS</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto p-gutter md:p-md pb-32">
+<!-- TOP SECTION: Availability & Identity -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-gutter mb-md">
+<div>
+<h1 class="font-h2 text-h2 text-white mb-xs">Welcome, Responder</h1>
+<p class="font-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="relative flex h-2 w-2">
+<span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+                    System Online • Sector 7-G
+                </p>
+</div>
+<!-- 2. AVAILABILITY TOGGLE -->
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="flex items-center gap-xs px-4 py-2 rounded font-label-caps text-green-400 bg-green-400/10 ring-1 ring-green-400/40 hover:bg-green-400/20 transition-all">
+<span class="material-symbols-outlined text-sm">check_circle</span> Available
+                </button>
+<button class="flex items-center gap-xs px-4 py-2 rounded font-label-caps text-[#FBBF24] hover:bg-[#FBBF24]/10 transition-all">
+<span class="material-symbols-outlined text-sm">pause_circle</span> Busy
+                </button>
+<button class="flex items-center gap-xs px-4 py-2 rounded font-label-caps text-error hover:bg-error/10 transition-all">
+<span class="material-symbols-outlined text-sm">do_not_disturb_on</span> Off Duty
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- 1. AI MATCH CARD (Full-width equivalent in grid) -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container border-l-4 border-green-500 rounded-lg overflow-hidden border-t border-r border-b border-outline-variant shadow-lg group">
+<div class="p-md">
+<div class="flex justify-between items-start mb-gutter">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-green-400" data-weight="fill">auto_awesome</span>
+<h3 class="font-h3 text-h3 text-white tracking-tight">AI Best Match For You</h3>
+</div>
+<span class="bg-green-500/10 text-green-400 px-3 py-1 rounded font-mono-data text-xs border border-green-500/30 uppercase tracking-widest">High Priority</span>
+</div>
+<div class="flex flex-col md:flex-row gap-md items-start">
+<div class="w-full md:w-48 h-32 bg-surface-container-high rounded relative overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" data-alt="A professional aerial view of a medical emergency response scene at night, featuring an ambulance with glowing blue and red lights parked on a dark city street. The scene is illuminated by technical grid patterns and localized glowing light, emphasizing a high-tech rescue atmosphere with deep navy and emerald accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDWDTHf8bGD1zr3oSZuZrHXsMuFmXVFOjnBHPijXsswt3k-ECJD1iOSnbj0-W1_7I737PhBdGEYIFnooT0RvWtcZvBlfkn5TWx3rEEc7LNVdL_ngY84Y6x6sr1thvPv_UKH6g1WeadkxwR5D2zMDIxax0x0EhjWoxqRts9DbIfZ3dLtB8a5VGhJMu4RxKMRpNjONQM3qzjEPr7iV0y3qbqRAj8aI1BczdLr3I_I0F37eU3MDHRCbLAM6jd9zO86U1ujEBl7zf1EroQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-h3 text-xl text-white mb-xs">Medical Rescue: Critical Transport</h4>
+<div class="flex flex-wrap gap-sm mb-gutter">
+<div class="flex items-center gap-xs text-on-surface-variant font-mono-data text-sm">
+<span class="material-symbols-outlined text-sm">distance</span> 1.4 km away
+                                    </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-mono-data text-sm">
+<span class="material-symbols-outlined text-sm">group</span> 3 / 10 Responders
+                                    </div>
+</div>
+<div class="flex gap-xs mb-md">
+<span class="px-2 py-0.5 bg-surface-container-high border border-outline-variant rounded font-mono-data text-xs text-primary">#medical</span>
+<span class="px-2 py-0.5 bg-surface-container-high border border-outline-variant rounded font-mono-data text-xs text-primary">#driver</span>
+</div>
+<div class="flex gap-base">
+<button class="flex-grow md:flex-none px-gutter py-md bg-green-600 hover:bg-green-500 text-white font-label-caps rounded transition-all active:scale-95 shadow-[0_0_15px_rgba(22,163,74,0.3)]">Accept Mission</button>
+<button class="flex-grow md:flex-none px-gutter py-md bg-transparent border border-outline text-on-surface hover:bg-surface-container-highest font-label-caps rounded transition-all">Skip</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. NEARBY REQUESTS LIST -->
+<div class="mt-md">
+<div class="flex items-center justify-between mb-gutter">
+<h2 class="font-h3 text-h3 text-white">Nearby Requests</h2>
+<div class="flex gap-xs bg-surface-container-low p-1 rounded border border-outline-variant">
+<button class="px-3 py-1 font-label-caps text-xs bg-primary-container text-on-primary-container rounded">All</button>
+<button class="px-3 py-1 font-label-caps text-xs text-on-surface-variant hover:text-white transition-colors">Medical</button>
+<button class="px-3 py-1 font-label-caps text-xs text-on-surface-variant hover:text-white transition-colors">Rescue</button>
+<button class="px-3 py-1 font-label-caps text-xs text-on-surface-variant hover:text-white transition-colors">Food</button>
+</div>
+</div>
+<div class="space-y-base">
+<!-- Request Card 1 -->
+<div class="bg-surface-container border border-outline-variant p-gutter flex flex-col md:flex-row justify-between items-center gap-gutter hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-gutter w-full">
+<div class="w-12 h-12 rounded bg-error-container/20 flex items-center justify-center border border-error/30">
+<span class="material-symbols-outlined text-error" data-weight="fill">oxygen_saturation</span>
+</div>
+<div>
+<div class="flex items-center gap-base">
+<h4 class="font-h3 text-lg text-white">Oxygen Supply Needed</h4>
+<span class="bg-error/10 text-error px-2 py-0.5 rounded font-mono-data text-[10px] border border-error/20">URGENT</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">Sector 4, Central Hospital • 0.8 km</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md w-full md:w-auto">
+<div class="text-right">
+<p class="text-xs font-mono-data text-on-surface-variant">Volunteers</p>
+<p class="text-sm font-bold text-white">2 / 5</p>
+</div>
+<button class="px-gutter py-2 bg-primary hover:bg-white text-on-primary font-label-caps text-xs rounded transition-all active:scale-95 group-hover:shadow-[0_0_10px_rgba(173,198,255,0.4)]">Quick Accept</button>
+</div>
+</div>
+<!-- Request Card 2 -->
+<div class="bg-surface-container border border-outline-variant p-gutter flex flex-col md:flex-row justify-between items-center gap-gutter hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-gutter w-full">
+<div class="w-12 h-12 rounded bg-blue-500/10 flex items-center justify-center border border-blue-500/30">
+<span class="material-symbols-outlined text-[#3B82F6]" data-weight="fill">water_drop</span>
+</div>
+<div>
+<div class="flex items-center gap-base">
+<h4 class="font-h3 text-lg text-white">Water Rescue Operations</h4>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded font-mono-data text-[10px] border border-primary/20">STABLE</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">River Bank Area, Point B • 3.2 km</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md w-full md:w-auto">
+<div class="text-right">
+<p class="text-xs font-mono-data text-on-surface-variant">Volunteers</p>
+<p class="text-sm font-bold text-white">8 / 12</p>
+</div>
+<button class="px-gutter py-2 bg-primary hover:bg-white text-on-primary font-label-caps text-xs rounded transition-all active:scale-95">Quick Accept</button>
+</div>
+</div>
+<!-- Request Card 3 -->
+<div class="bg-surface-container border border-outline-variant p-gutter flex flex-col md:flex-row justify-between items-center gap-gutter hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-gutter w-full">
+<div class="w-12 h-12 rounded bg-tertiary-container/20 flex items-center justify-center border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary" data-weight="fill">lunch_dining</span>
+</div>
+<div>
+<div class="flex items-center gap-base">
+<h4 class="font-h3 text-lg text-white">Meal Distribution</h4>
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded font-mono-data text-[10px] border border-tertiary/20">ONGOING</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">Community Shelter 12 • 5.1 km</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md w-full md:w-auto">
+<div class="text-right">
+<p class="text-xs font-mono-data text-on-surface-variant">Volunteers</p>
+<p class="text-sm font-bold text-white">14 / 20</p>
+</div>
+<button class="px-gutter py-2 bg-primary hover:bg-white text-on-primary font-label-caps text-xs rounded transition-all active:scale-95">Quick Accept</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SIDEBAR: STATS & MAP PREVIEW -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Map Widget -->
+<div class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden h-64 relative group">
+<img class="w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105" data-alt="A dark-themed satellite topographical map of a metropolitan area with glowing blue mission markers and pulsating green signal icons. The map features a high-contrast technical UI overlay with digital coordinates and a transparent grid pattern, reflecting a mission control interface for emergency response." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqOI3y-SwBrZ8h86bzRlmWH2rVuxPnP5fDxCBHy6lML9sdm1rx5fi_UW0Nk9eOXrYzRW9Jyq9i9zSG60AJEneCU0KwxK7SaptftSvePArPs7wlSNmlGiWSCbW_SFY1JEhRqX7VNJUWxSpgvemxCs6zGheOTkZs5yGPyIxOKqGTqx0nnyccr6JHBux-qwIdy4yTYkIGxyXUJwh1uVu6e7UiEHYb731panHxhufGYH3PuF1SXRE6nBAthqD14VLlO13DossiUC6cDqbi"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-primary text-4xl animate-bounce">location_on</span>
+</div>
+<div class="absolute bottom-gutter left-gutter right-gutter bg-[#0D1117]/80 backdrop-blur-md border border-outline-variant p-base rounded">
+<p class="font-mono-data text-xs text-white uppercase tracking-tighter">Current Location: Sector 7-G</p>
+</div>
+</div>
+<!-- Leaderboard/Activity -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-gutter">
+<h3 class="font-label-caps text-sm text-on-surface-variant mb-gutter">Recent Activity</h3>
+<div class="space-y-gutter">
+<div class="flex items-center gap-base">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<p class="text-xs text-on-surface"><span class="font-bold">Mission Completed:</span> Trauma Unit Transport</p>
+<span class="ml-auto text-[10px] text-on-surface-variant font-mono-data">2h ago</span>
+</div>
+<div class="flex items-center gap-base">
+<div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+<p class="text-xs text-on-surface"><span class="font-bold">Badge Earned:</span> Night Watchman</p>
+<span class="ml-auto text-[10px] text-on-surface-variant font-mono-data">5h ago</span>
+</div>
+<div class="flex items-center gap-base">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+<p class="text-xs text-on-surface"><span class="font-bold">Alert:</span> New High Priority Mission Nearby</p>
+<span class="ml-auto text-[10px] text-on-surface-variant font-mono-data">10m ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 4. MY STATS BAR (Floating at bottom for mobile/fixed for desktop) -->
+<div class="fixed bottom-20 left-0 w-full z-40 px-gutter md:px-xl mb-base">
+<div class="max-w-7xl mx-auto bg-surface-container border border-outline-variant rounded-xl shadow-2xl p-base md:p-gutter flex items-center justify-around md:justify-between backdrop-blur-lg">
+<div class="flex flex-col md:flex-row items-center gap-xs md:gap-gutter">
+<span class="material-symbols-outlined text-primary-container hidden md:block">assignment_turned_in</span>
+<div class="text-center md:text-left">
+<p class="text-[10px] md:text-xs font-label-caps text-on-surface-variant">Missions</p>
+<p class="font-h3 text-base md:text-lg text-white">12</p>
+</div>
+</div>
+<div class="h-8 w-px bg-outline-variant hidden md:block"></div>
+<div class="flex flex-col md:flex-row items-center gap-xs md:gap-gutter">
+<span class="material-symbols-outlined text-tertiary hidden md:block">military_tech</span>
+<div class="text-center md:text-left">
+<p class="text-[10px] md:text-xs font-label-caps text-on-surface-variant">Points</p>
+<p class="font-h3 text-base md:text-lg text-white">340</p>
+</div>
+</div>
+<div class="h-8 w-px bg-outline-variant hidden md:block"></div>
+<div class="flex flex-col md:flex-row items-center gap-xs md:gap-gutter">
+<span class="material-symbols-outlined text-green-400 hidden md:block">verified_user</span>
+<div class="text-center md:text-left">
+<p class="text-[10px] md:text-xs font-label-caps text-on-surface-variant">Badge</p>
+<p class="font-h3 text-base md:text-lg text-white">First Responder</p>
+</div>
+</div>
+<div class="h-8 w-px bg-outline-variant hidden md:block"></div>
+<div class="flex flex-col md:flex-row items-center gap-xs md:gap-gutter">
+<span class="material-symbols-outlined text-error hidden md:block">local_fire_department</span>
+<div class="text-center md:text-left">
+<p class="text-[10px] md:text-xs font-label-caps text-on-surface-variant">Streak</p>
+<p class="font-h3 text-base md:text-lg text-white">3 days</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Mobile Hub) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 bg-[#161B22] border-t border-[#30363D] shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#3B82F6] bg-[#3B82F6]/10 rounded-md ring-1 ring-[#3B82F6]/40 px-3 py-1 active:scale-95 duration-100 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tight mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8B949E] px-3 py-1 hover:bg-[#30363D] active:scale-95 duration-100 transition-colors" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tight mt-1">Missions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8B949E] px-3 py-1 hover:bg-[#30363D] active:scale-95 duration-100 transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tight mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8B949E] px-3 py-1 hover:bg-[#30363D] active:scale-95 duration-100 transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tight mt-1">Metrics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8B949E] px-3 py-1 hover:bg-[#30363D] active:scale-95 duration-100 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tight mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COMMAND_CENTER | Request Monitoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#10131a",
+                      "on-tertiary-container": "#461f00",
+                      "surface-bright": "#363941",
+                      "on-secondary": "#3c0091",
+                      "surface-container-highest": "#32353c",
+                      "surface-container": "#1d2027",
+                      "background": "#10131a",
+                      "secondary-fixed": "#e9ddff",
+                      "surface-container-lowest": "#0b0e15",
+                      "on-tertiary-fixed": "#311400",
+                      "surface-dim": "#10131a",
+                      "on-primary-fixed-variant": "#004395",
+                      "tertiary-fixed": "#ffdcc6",
+                      "inverse-primary": "#005ac2",
+                      "primary-container": "#4d8eff",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#23005c",
+                      "secondary": "#d0bcff",
+                      "on-surface": "#e1e2ec",
+                      "error-container": "#93000a",
+                      "outline-variant": "#424754",
+                      "on-surface-variant": "#c2c6d6",
+                      "on-error-container": "#ffdad6",
+                      "secondary-container": "#571bc1",
+                      "on-tertiary-fixed-variant": "#723600",
+                      "on-primary": "#002e6a",
+                      "inverse-surface": "#e1e2ec",
+                      "tertiary": "#ffb786",
+                      "on-tertiary": "#502400",
+                      "surface-container-low": "#191b23",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "surface-variant": "#32353c",
+                      "surface-container-high": "#272a31",
+                      "tertiary-fixed-dim": "#ffb786",
+                      "surface-tint": "#adc6ff",
+                      "on-primary-container": "#00285d",
+                      "inverse-on-surface": "#2e3038",
+                      "primary": "#adc6ff",
+                      "on-error": "#690005",
+                      "on-primary-fixed": "#001a42",
+                      "primary-fixed-dim": "#adc6ff",
+                      "outline": "#8c909f",
+                      "tertiary-container": "#df7412",
+                      "primary-fixed": "#d8e2ff",
+                      "on-secondary-container": "#c4abff",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "on-background": "#e1e2ec"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "base": "8px",
+                      "md": "24px",
+                      "margin": "24px",
+                      "xs": "4px",
+                      "xl": "64px",
+                      "lg": "40px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "mono-data": ["Space Grotesk"],
+                      "body-md": ["Space Grotesk"],
+                      "body-lg": ["Space Grotesk"],
+                      "label-caps": ["Space Grotesk"],
+                      "h1": ["Space Grotesk"],
+                      "h3": ["Space Grotesk"],
+                      "h2": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "mono-data": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        .bg-grid-slate-900 {
+            background-image: radial-gradient(circle, #30363D 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Anchor -->
+<nav class="bg-[#0D1117] text-blue-500 font-['Space_Grotesk'] tracking-tighter uppercase font-bold docked full-width top-0 border-b border-b border-[#30363D] shadow-[0_0_15px_rgba(59,130,246,0.1)] flex justify-between items-center px-6 py-3 w-full sticky z-50">
+<div class="text-xl font-black text-blue-500 tracking-widest">SAHAYSATHI</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-blue-500 border-b-2 border-blue-500 py-1 transition-all" href="#">Requests</a>
+<a class="text-slate-400 hover:bg-[#161B22] hover:scale-102 transition-all duration-150 px-3 py-1" href="#">Fleet</a>
+<a class="text-slate-400 hover:bg-[#161B22] hover:scale-102 transition-all duration-150 px-3 py-1" href="#">Intelligence</a>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-blue-500">notifications</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-blue-500">settings</span>
+</div>
+</nav>
+<main class="min-h-screen p-md md:p-xl bg-grid-slate-900">
+<!-- Header Section -->
+<header class="mb-lg max-w-7xl mx-auto">
+<h1 class="font-h1 text-h1 mb-sm text-primary">Incident Pipeline</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl">Real-time emergency request orchestration system. High-fidelity data monitoring for field assistance and asset deployment.</p>
+</header>
+<!-- Main Layout: Sidebar & Content -->
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:block lg:col-span-3">
+<nav class="bg-[#0D1117] font-['Space_Grotesk'] text-sm font-medium uppercase h-auto w-full border border-[#30363D] flex flex-col space-y-2 p-4">
+<div class="mb-base p-2">
+<div class="text-lg font-bold text-blue-400">SECTOR_01</div>
+<div class="text-[10px] text-slate-500">Active Protocol: ALPHA</div>
+</div>
+<a class="bg-[#161B22] text-blue-500 border-l-4 border-blue-500 shadow-[inset_0_0_10px_rgba(59,130,246,0.2)] p-3 flex items-center space-x-3 transition-all" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span>Open Tasks</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 hover:bg-[#161B22] hover:scale-102 transition-all p-3 flex items-center space-x-3" href="#">
+<span class="material-symbols-outlined">minor_crash</span>
+<span>Fleet Status</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 hover:bg-[#161B22] hover:scale-102 transition-all p-3 flex items-center space-x-3" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Personnel</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 hover:bg-[#161B22] hover:scale-102 transition-all p-3 flex items-center space-x-3" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+</aside>
+<!-- Main Dashboard Area -->
+<div class="lg:col-span-9 space-y-lg">
+<!-- Section 1: Full Size Cards -->
+<section>
+<div class="flex items-center justify-between mb-md border-l-2 border-primary pl-4">
+<h2 class="font-h2 text-h2 uppercase tracking-tight">Full Size Cards</h2>
+<span class="font-mono-data text-outline">VIEWPORT: HIGH_DENSITY</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Card: Rescue / Critical -->
+<article class="bg-[#161B22] border-l-4 border-[#EF4444] border border-[#30363D] p-md flex flex-col space-y-sm transition-all hover:scale-102 active:scale-97 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center">
+<div class="flex space-x-2">
+<span class="bg-[#EF4444]/10 border border-[#EF4444] text-[#EF4444] text-[10px] px-2 py-1 font-bold tracking-widest uppercase">🆘 RESCUE</span>
+<span class="bg-[#EF4444] text-white text-[10px] px-2 py-1 font-bold tracking-widest uppercase animate-pulse-glow">CRITICAL</span>
+</div>
+<span class="font-mono-data text-[11px] text-slate-500 uppercase">12 min ago</span>
+</div>
+<h3 class="font-h3 text-h3 line-clamp-2 text-on-surface">Severe flooding in residential area. Elderly couple trapped on second floor.</h3>
+<div class="flex items-center text-slate-400 font-mono-data text-sm">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+                                Koramangala, Bengaluru
+                            </div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-mono-data text-slate-500 uppercase">
+<span>Deployment Progress</span>
+<span>2 / 10 volunteers</span>
+</div>
+<div class="h-1 bg-[#30363D] w-full rounded-full overflow-hidden">
+<div class="h-full bg-[#EF4444]" style="width: 20%"></div>
+</div>
+</div>
+<div class="flex space-x-2 pt-2">
+<button class="flex-1 bg-[#3B82F6] hover:bg-blue-600 text-white font-bold py-2 text-sm uppercase tracking-wider transition-all">I'm On My Way</button>
+<button class="px-4 border border-[#30363D] text-slate-300 hover:bg-[#30363D] transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</article>
+<!-- Card: Medical / High -->
+<article class="bg-[#161B22] border-l-4 border-[#F59E0B] border border-[#30363D] p-md flex flex-col space-y-sm transition-all hover:scale-102 active:scale-97 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center">
+<div class="flex space-x-2">
+<span class="bg-[#F59E0B]/10 border border-[#F59E0B] text-[#F59E0B] text-[10px] px-2 py-1 font-bold tracking-widest uppercase">⚕️ MEDICAL</span>
+<span class="bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B] text-[10px] px-2 py-1 font-bold tracking-widest uppercase">HIGH PRIORITY</span>
+</div>
+<span class="font-mono-data text-[11px] text-slate-500 uppercase">45 min ago</span>
+</div>
+<h3 class="font-h3 text-h3 line-clamp-2 text-on-surface">Emergency insulin supply needed for diabetic patient. Transport link broken.</h3>
+<div class="flex items-center text-slate-400 font-mono-data text-sm">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+                                Indiranagar, Sector 4
+                            </div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-mono-data text-slate-500 uppercase">
+<span>Deployment Progress</span>
+<span>5 / 8 volunteers</span>
+</div>
+<div class="h-1 bg-[#30363D] w-full rounded-full overflow-hidden">
+<div class="h-full bg-[#F59E0B]" style="width: 62%"></div>
+</div>
+</div>
+<div class="flex space-x-2 pt-2">
+<button class="flex-1 bg-[#3B82F6] hover:bg-blue-600 text-white font-bold py-2 text-sm uppercase tracking-wider transition-all">I'm On My Way</button>
+<button class="px-4 border border-[#30363D] text-slate-300 hover:bg-[#30363D] transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</article>
+<!-- Card: Food / Medium -->
+<article class="bg-[#161B22] border-l-4 border-[#3B82F6] border border-[#30363D] p-md flex flex-col space-y-sm transition-all hover:scale-102 active:scale-97 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center">
+<div class="flex space-x-2">
+<span class="bg-[#3B82F6]/10 border border-[#3B82F6] text-[#3B82F6] text-[10px] px-2 py-1 font-bold tracking-widest uppercase">📦 FOOD</span>
+<span class="bg-[#3B82F6]/20 text-[#3B82F6] border border-[#3B82F6] text-[10px] px-2 py-1 font-bold tracking-widest uppercase">MEDIUM</span>
+</div>
+<span class="font-mono-data text-[11px] text-slate-500 uppercase">1 hr ago</span>
+</div>
+<h3 class="font-h3 text-h3 line-clamp-2 text-on-surface">Community kitchen requires raw materials. 50 families awaiting meal distribution.</h3>
+<div class="flex items-center text-slate-400 font-mono-data text-sm">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+                                Whitefield Hub
+                            </div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-mono-data text-slate-500 uppercase">
+<span>Deployment Progress</span>
+<span>12 / 15 volunteers</span>
+</div>
+<div class="h-1 bg-[#30363D] w-full rounded-full overflow-hidden">
+<div class="h-full bg-[#10B981]" style="width: 80%"></div>
+</div>
+</div>
+<div class="flex space-x-2 pt-2">
+<button class="flex-1 bg-[#3B82F6] hover:bg-blue-600 text-white font-bold py-2 text-sm uppercase tracking-wider transition-all">I'm On My Way</button>
+<button class="px-4 border border-[#30363D] text-slate-300 hover:bg-[#30363D] transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</article>
+<!-- Card: Other / Low -->
+<article class="bg-[#161B22] border-l-4 border-slate-500 border border-[#30363D] p-md flex flex-col space-y-sm transition-all hover:scale-102 active:scale-97 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center">
+<div class="flex space-x-2">
+<span class="bg-slate-500/10 border border-slate-500 text-slate-500 text-[10px] px-2 py-1 font-bold tracking-widest uppercase">🛠️ OTHER</span>
+<span class="bg-slate-500/20 text-slate-500 border border-slate-500 text-[10px] px-2 py-1 font-bold tracking-widest uppercase">LOW PRIORITY</span>
+</div>
+<span class="font-mono-data text-[11px] text-slate-500 uppercase">3 hr ago</span>
+</div>
+<h3 class="font-h3 text-h3 line-clamp-2 text-on-surface">Downed power line in non-residential alley. Requires utility flagging.</h3>
+<div class="flex items-center text-slate-400 font-mono-data text-sm">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+                                Electronic City, Phase II
+                            </div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-mono-data text-slate-500 uppercase">
+<span>Deployment Progress</span>
+<span>0 / 2 volunteers</span>
+</div>
+<div class="h-1 bg-[#30363D] w-full rounded-full overflow-hidden">
+<div class="h-full bg-slate-500" style="width: 0%"></div>
+</div>
+</div>
+<div class="flex space-x-2 pt-2">
+<button class="flex-1 bg-[#3B82F6] hover:bg-blue-600 text-white font-bold py-2 text-sm uppercase tracking-wider transition-all">I'm On My Way</button>
+<button class="px-4 border border-[#30363D] text-slate-300 hover:bg-[#30363D] transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Section 2: Compact List View -->
+<section>
+<div class="flex items-center justify-between mb-md border-l-2 border-primary pl-4">
+<h2 class="font-h2 text-h2 uppercase tracking-tight">Compact List View</h2>
+<span class="font-mono-data text-outline">DENSITY: ULTRA</span>
+</div>
+<div class="bg-[#0D1117] border border-[#30363D] divide-y divide-[#30363D]">
+<!-- Compact: Critical -->
+<div class="flex items-center p-4 hover:bg-[#161B22] transition-all group">
+<div class="w-3 h-3 bg-[#EF4444] rounded-full animate-pulse-glow mr-4"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-3">
+<span class="font-bold text-on-surface truncate max-w-md">Flood Evacuation: Koramangala Sector 3</span>
+<span class="text-slate-500 text-xs font-mono-data">0.4 km</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-[#EF4444] font-mono-data text-[10px] uppercase font-bold hidden sm:inline">CRITICAL</span>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-1 text-[11px] font-bold uppercase tracking-wider transition-all">Accept</button>
+</div>
+</div>
+<!-- Compact: High -->
+<div class="flex items-center p-4 hover:bg-[#161B22] transition-all group">
+<div class="w-3 h-3 bg-[#F59E0B] rounded-full mr-4"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-3">
+<span class="font-bold text-on-surface truncate max-w-md">Medical: Insulin Dispatch Indiranagar</span>
+<span class="text-slate-500 text-xs font-mono-data">1.2 km</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-[#F59E0B] font-mono-data text-[10px] uppercase font-bold hidden sm:inline">HIGH</span>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-1 text-[11px] font-bold uppercase tracking-wider transition-all">Accept</button>
+</div>
+</div>
+<!-- Compact: Medium -->
+<div class="flex items-center p-4 hover:bg-[#161B22] transition-all group">
+<div class="w-3 h-3 bg-[#FBBF24] rounded-full mr-4"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-3">
+<span class="font-bold text-on-surface truncate max-w-md">Logistics: Water Crate Distribution</span>
+<span class="text-slate-500 text-xs font-mono-data">3.8 km</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-[#FBBF24] font-mono-data text-[10px] uppercase font-bold hidden sm:inline">MEDIUM</span>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-1 text-[11px] font-bold uppercase tracking-wider transition-all">Accept</button>
+</div>
+</div>
+<!-- Compact: Low -->
+<div class="flex items-center p-4 hover:bg-[#161B22] transition-all group">
+<div class="w-3 h-3 bg-[#3B82F6] rounded-full mr-4"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-3">
+<span class="font-bold text-on-surface truncate max-w-md">Utility: Street Light Repair Request</span>
+<span class="text-slate-500 text-xs font-mono-data">5.1 km</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-[#3B82F6] font-mono-data text-[10px] uppercase font-bold hidden sm:inline">LOW</span>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-1 text-[11px] font-bold uppercase tracking-wider transition-all">Accept</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Visualization Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-[#161B22] border border-[#30363D] p-md">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="text-h3 text-primary uppercase">Sector Density Map</h3>
+<p class="text-xs text-slate-500 font-mono-data">LOC: 12.9716° N, 77.5946° E</p>
+</div>
+<span class="bg-green-500/10 text-green-500 border border-green-500 text-[10px] px-2 py-1 font-bold">SYSTEM LIVE</span>
+</div>
+<div class="aspect-video bg-[#0D1117] relative overflow-hidden group">
+<img alt="A high-contrast topographic map of a metropolitan city area displayed on a tactical digital screen. The map features deep navy backgrounds with neon blue street grids and vibrant red hotspots indicating high-activity emergency zones. Data overlays including coordinates and vector arrows create a sophisticated, mission-control aesthetic. The lighting is low-key, emphasizing the luminescent data points against the dark terrain." class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-location="Bengaluru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgpBEjEVyUu2fU5v7r_A8Sac976WFyab7ig7o7nrX9iLbOmPI5cwcSkNEOPBPIvg2CHIYz0leuq4XTbBCUHJl1OSmq3RTfvpyZ60JGQvTxZO9iMEd1kaopUfsCN_eQbFcZrmuQMbSZI8VzQKUVrqYFOcbWGaMsza2A24mHS0xQkmQn7VeIsXepSFsIxbZgzBmCQDuaN5mqW1yo4xcjpOdKoe4Ru3aBqj226SMizI2G-TKz6eNoV4bBw_lU2_-RLGaZ3CvOAkbWO-8X"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 border-2 border-primary rounded-full animate-ping opacity-20"></div>
+</div>
+</div>
+</div>
+<div class="bg-[#161B22] border border-[#30363D] p-md flex flex-col justify-between">
+<div>
+<h3 class="text-h3 text-primary uppercase mb-base">Asset Allocation</h3>
+<p class="text-xs text-slate-500 font-mono-data mb-lg">Active Personnel by Priority</p>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono-data uppercase">
+<span>Rescue Ops</span>
+<span>82%</span>
+</div>
+<div class="h-2 bg-[#0D1117] rounded-full overflow-hidden">
+<div class="h-full bg-[#EF4444]" style="width: 82%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono-data uppercase">
+<span>Medical Assist</span>
+<span>45%</span>
+</div>
+<div class="h-2 bg-[#0D1117] rounded-full overflow-hidden">
+<div class="h-full bg-[#F59E0B]" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono-data uppercase">
+<span>Supply Chain</span>
+<span>68%</span>
+</div>
+<div class="h-2 bg-[#0D1117] rounded-full overflow-hidden">
+<div class="h-full bg-[#3B82F6]" style="width: 68%"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg border border-primary text-primary font-bold py-3 uppercase text-xs tracking-widest hover:bg-primary/10 transition-all">Rebalance Fleet</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation Shell -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full bg-[#161B22] border-t border-[#30363D] shadow-[0_-4px_20px_rgba(0,0,0,0.5)] flex justify-around items-center px-4 py-2 z-50">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-blue-400 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-blue-500/10 text-blue-500 rounded-lg py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">Active</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-blue-400 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-blue-400 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">Profile</span>
+</a>
+</footer>
+<!-- Emergency Floating Action Button (Conditional based on context) -->
+<button class="fixed right-6 bottom-20 md:bottom-10 bg-[#EF4444] text-white p-4 rounded-full shadow-[0_0_20px_rgba(239,68,68,0.5)] animate-pulse-glow z-40 transition-transform active:scale-90 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</button>
+</body></html>

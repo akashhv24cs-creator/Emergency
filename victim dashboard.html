@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SahaySathi | Victim Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#363941",
+                        "on-surface-variant": "#c2c6d6",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-container-high": "#272a31",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#191b23",
+                        "surface-container": "#1d2027",
+                        "surface": "#10131a",
+                        "background": "#10131a",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "surface-tint": "#adc6ff",
+                        "outline-variant": "#424754",
+                        "surface-dim": "#10131a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#ffb786",
+                        "on-tertiary": "#502400",
+                        "inverse-surface": "#e1e2ec",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-highest": "#32353c",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "primary-container": "#4d8eff",
+                        "on-secondary-container": "#c4abff",
+                        "surface-container-lowest": "#0b0e15",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-container": "#00285d",
+                        "secondary-container": "#571bc1",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed": "#23005c",
+                        "on-background": "#e1e2ec",
+                        "on-primary": "#002e6a",
+                        "inverse-on-surface": "#2e3038",
+                        "primary": "#adc6ff",
+                        "on-tertiary-container": "#461f00",
+                        "secondary": "#d0bcff",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#001a42",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-surface": "#e1e2ec",
+                        "surface-variant": "#32353c",
+                        "on-tertiary-fixed": "#311400",
+                        "tertiary-container": "#df7412"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "mono-data": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"],
+                        "h1": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "mono-data": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .sos-pulse {
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .ping-green {
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
+        .custom-scrollbar::-webkit-scrollbar { height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #161B22; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #30363D; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased pb-24">
+<!-- TopNavBar Shell -->
+<header class="bg-slate-950 text-blue-500 font-['Space_Grotesk'] tracking-tight docked full-width top-0 border-b border-slate-800 shadow-none z-50 sticky">
+<div class="flex justify-between items-center w-full px-6 py-4">
+<div class="text-xl font-bold tracking-tighter text-blue-500 uppercase">SahaySathi</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:scale-[1.02] transition-transform duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-400 hover:scale-[1.02] transition-transform duration-150 active:scale-[0.97]">
+<span class="material-symbols-outlined">help_center</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-slate-700">
+<img alt="User profile" data-alt="A professional headshot of a middle-aged man with a calm and reassuring expression, set against a dark, out-of-focus urban background at night. The lighting is low-key with subtle blue rim lighting to match the technical minimalist UI. He is wearing a dark, high-quality technical jacket." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANGmIDntPotpPOvNK2wmHdrxVmrIJFBgmIte5oHAoJ_ht-1JtWS9hwQV6g6CEbC-9gmCrjMkAQOvyB5pX9ZTA3INTaw8hm-eWBJIRVtYA2YD7y1DdZtj77gPeq6wHtDJVY-FN1TyXkjPxSCKVwVhGpZnKbdz3VDfUS814foWCBBZuqF1gulHmzG6-UCqHzm6fWDpJmCF_YhST5p_ki0oSyc4LFmTV2MOV5Ua-eH95rtCCEmjccj2ELQ1GlodApXFWPROQsHzpUDnDk"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-margin pt-base">
+<!-- SOS HERO SECTION -->
+<section class="py-lg flex flex-col items-center text-center">
+<div class="relative mb-lg">
+<button class="w-[120px] h-[120px] bg-[#EF4444] rounded-full flex items-center justify-center sos-pulse hover:scale-[1.02] active:scale-[0.97] transition-all">
+<span class="text-white font-h2 font-bold tracking-tight">SOS</span>
+</button>
+</div>
+<p class="font-body-lg text-on-surface-variant mb-lg max-w-xs">Tap for immediate emergency help</p>
+<div class="grid grid-cols-2 gap-gutter w-full max-w-md">
+<button class="bg-primary text-on-primary font-label-caps py-4 rounded-lg flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+<span class="material-symbols-outlined">emergency_share</span>
+                    Request Help
+                </button>
+<button class="bg-surface-container border border-outline-variant text-primary font-label-caps py-4 rounded-lg flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.97] transition-all">
+<span class="material-symbols-outlined">location_on</span>
+                    Find Shelter
+                </button>
+</div>
+</section>
+<!-- MY ACTIVE REQUESTS -->
+<section class="mb-lg">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h3 text-on-surface flex items-center gap-base">
+                    My requests
+                    <span class="bg-primary-container text-on-primary-container text-xs px-2 py-0.5 rounded-full">2</span>
+</h2>
+<button class="text-primary font-label-caps flex items-center gap-xs">
+                    View History <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="space-y-md">
+<!-- Request Card 1 (Rescue/Critical) -->
+<div class="bg-surface-container border border-outline-variant border-l-4 border-l-[#EF4444] rounded-lg overflow-hidden transition-transform duration-150 hover:scale-[1.01]">
+<div class="p-md border-b border-outline-variant flex justify-between items-start">
+<div>
+<div class="flex items-center gap-base mb-xs">
+<span class="bg-error-container text-error font-label-caps text-[10px] px-2 py-0.5 rounded border border-error">CRITICAL</span>
+<span class="text-on-surface-variant font-mono-data uppercase text-xs">#RQ-4821</span>
+</div>
+<h3 class="font-h3 text-xl mb-1">Water Rescue Needed</h3>
+<p class="text-on-surface-variant font-body-md text-sm">Sector 7, Block B, Submerged Area</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-primary font-mono-data text-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm animate-pulse">radio_button_checked</span>
+                                Active
+                            </span>
+<span class="text-on-surface-variant text-xs mt-1">Sent 14m ago</span>
+</div>
+</div>
+<div class="p-md flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container overflow-hidden">
+<img alt="V1" data-alt="Close-up portrait of a rescue volunteer wearing a bright orange safety vest and a technical helmet. He looks determined and focused, with rain droplets visible on his face and equipment. Cinematic dark lighting with warm orange highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_99P0w01lYKbo2WV0Tcl8eQ_vPnQVsVsYfmzeuBXo7AiEWNqdZ0bq-iu4i_rz9jBTCD7hO9rVjUP9cCu_I2t5gsUsSIaJ4KtHGzSfK4I7vm_6s6tT8rtXuYiZX6QKuNioYI1OF3sgyF-pr-gCK4Gs7JzIC-6YWvFF_qlOOOU--M2gh59AlCkyxqmg7MGD3qmGnyyhFSTCp0ptiXFEMLvzITbBCWXEPo01IlsFuBqhMaTnCOJzLHfl0b4PAy6AQR0R3uOSOnmTuBBn"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container overflow-hidden">
+<img alt="V2" data-alt="Portrait of a female medical responder in a dark blue emergency uniform with reflective strips. She has a serious but empathetic expression. The environment is dark and technical, suggesting an emergency response center background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7ARBzJHvuzDR_83HKtCS7Lku8Tcqjf7pECB6-ESOpkOODXTE6rzgmk827wsrQYhv5I9GPpQ3qiaY2pK7YCQDwRjn-S8K5evZ3H_06xzUHBcvDbps-cRfZj8J7SwtSTSVz77tpRcxgn2D-6F-IVfQiQN8MqQLmODRBRXeSi6VRgA0rp3Zdx_8J7fPEfKN7tpocQZek0KTiGsXvkbHl9Fjq4QWRx8Rw0di8uZwt08gRKZKrgus84bxqwMjBoFceKhaKNjRDzyP6JGe_"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container bg-surface-bright flex items-center justify-center">
+<span class="text-[10px] font-bold">+5</span>
+</div>
+</div>
+<span class="text-on-surface-variant text-sm font-mono-data">7 Volunteers assigned</span>
+</div>
+</div>
+<!-- Status Banner -->
+<div class="bg-green-500/10 border-t border-green-500/20 px-md py-base flex items-center gap-base">
+<div class="relative flex h-3 w-3">
+<span class="ping-green absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+</div>
+<span class="text-green-400 font-label-caps text-xs">Help is on the way (Arriving in 8 mins)</span>
+</div>
+</div>
+<!-- Request Card 2 (Medical/High) -->
+<div class="bg-surface-container border border-outline-variant border-l-4 border-l-[#F59E0B] rounded-lg overflow-hidden transition-transform duration-150 hover:scale-[1.01]">
+<div class="p-md border-b border-outline-variant flex justify-between items-start">
+<div>
+<div class="flex items-center gap-base mb-xs">
+<span class="bg-tertiary-container/20 text-tertiary font-label-caps text-[10px] px-2 py-0.5 rounded border border-tertiary/50">HIGH</span>
+<span class="text-on-surface-variant font-mono-data uppercase text-xs">#RQ-4809</span>
+</div>
+<h3 class="font-h3 text-xl mb-1">Medical Supplies</h3>
+<p class="text-on-surface-variant font-body-md text-sm">Home Address - Insulin &amp; First Aid Kit</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-outline font-mono-data text-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                Pending
+                            </span>
+<span class="text-on-surface-variant text-xs mt-1">Sent 2h ago</span>
+</div>
+</div>
+<div class="p-md flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">group</span>
+<span class="text-on-surface-variant text-sm font-mono-data">Searching for nearby volunteers...</span>
+</div>
+<button class="text-primary font-label-caps text-xs px-3 py-1 border border-primary/30 rounded hover:bg-primary/10 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+</section>
+<!-- NEARBY SHELTERS -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h3 text-on-surface">Nearby Shelters</h2>
+<span class="text-on-surface-variant font-mono-data text-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">gps_fixed</span>
+                    Live Location Active
+                </span>
+</div>
+<div class="flex gap-gutter overflow-x-auto pb-md custom-scrollbar -mx-margin px-margin snap-x">
+<!-- Shelter Card 1 -->
+<div class="min-w-[280px] bg-surface-container border border-outline-variant rounded-lg p-md snap-start flex flex-col justify-between hover:border-primary transition-colors">
+<div>
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-h3 text-lg">Central Community Hall</h4>
+<span class="text-primary font-mono-data text-xs">1.2km</span>
+</div>
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[65%]"></div>
+</div>
+<span class="text-xs font-mono-data text-on-surface-variant">65%</span>
+</div>
+<div class="flex gap-xs flex-wrap mb-md">
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">FOOD</span>
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">MEDICAL</span>
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">PETS OK</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface font-label-caps py-2 rounded border border-outline-variant hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-base">
+<span class="material-symbols-outlined text-sm">directions</span>
+                        Get Directions
+                    </button>
+</div>
+<!-- Shelter Card 2 -->
+<div class="min-w-[280px] bg-surface-container border border-outline-variant rounded-lg p-md snap-start flex flex-col justify-between hover:border-primary transition-colors">
+<div>
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-h3 text-lg">Govt. High School A</h4>
+<span class="text-primary font-mono-data text-xs">2.4km</span>
+</div>
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[88%]"></div>
+</div>
+<span class="text-xs font-mono-data text-on-surface-variant">88%</span>
+</div>
+<div class="flex gap-xs flex-wrap mb-md">
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">FOOD</span>
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">BEDS FULL</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface font-label-caps py-2 rounded border border-outline-variant hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-base">
+<span class="material-symbols-outlined text-sm">directions</span>
+                        Get Directions
+                    </button>
+</div>
+<!-- Shelter Card 3 -->
+<div class="min-w-[280px] bg-surface-container border border-outline-variant rounded-lg p-md snap-start flex flex-col justify-between hover:border-primary transition-colors">
+<div>
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-h3 text-lg">St. Jude Stadium</h4>
+<span class="text-primary font-mono-data text-xs">3.1km</span>
+</div>
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[30%]"></div>
+</div>
+<span class="text-xs font-mono-data text-on-surface-variant">30%</span>
+</div>
+<div class="flex gap-xs flex-wrap mb-md">
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">MASS CAPACITY</span>
+<span class="bg-surface-bright text-on-surface-variant text-[10px] px-2 py-0.5 rounded">MEDICAL</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface font-label-caps py-2 rounded border border-outline-variant hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-base">
+<span class="material-symbols-outlined text-sm">directions</span>
+                        Get Directions
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="bg-slate-900 border-t border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe z-50">
+<button class="flex flex-col items-center justify-center text-blue-500 bg-blue-500/10 rounded-lg p-2 shadow-[0_0_15px_rgba(59,130,246,0.3)] active:scale-[0.95] duration-100">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Space_Grotesk'] text-xs font-semibold uppercase tracking-widest mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-800 transition-colors active:scale-[0.95] duration-100">
+<span class="material-symbols-outlined">emergency_share</span>
+<span class="font-['Space_Grotesk'] text-xs font-semibold uppercase tracking-widest mt-1">Requests</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-800 transition-colors active:scale-[0.95] duration-100">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-['Space_Grotesk'] text-xs font-semibold uppercase tracking-widest mt-1">Shelters</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-2 hover:bg-slate-800 transition-colors active:scale-[0.95] duration-100">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Space_Grotesk'] text-xs font-semibold uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+</body></html>
