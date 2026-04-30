@@ -51,12 +51,12 @@ export default function OfflineIndicator() {
     }`}>
       {isOffline ? (
         <>
-          <AlertTriangle className="w-4 h-4" />
+          <AlertTriangle className="w-4 h-4 transition-colors duration-300" />
           ⚠️ Offline Mode — changes will sync later
         </>
       ) : (
         <>
-          <CheckCircle2 className="w-4 h-4" />
+          <CheckCircle2 className="w-4 h-4 transition-colors duration-300" />
           ✅ Back online — syncing...
         </>
       )}

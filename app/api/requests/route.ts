@@ -39,7 +39,7 @@ export async function POST(request: Request) {
           is_fake: is_fake || false,
           confidence: confidence || 1.0,
           volunteer_count: 0,
-          status: 'active'
+          status: 'waiting'
         },
       ])
       .select();
@@ -73,30 +73,56 @@ export async function PATCH(request: Request) {
     
     if (action === 'volunteer') {
       // Get current count to check limit
-      const { data: current } = await supabase.from('requests').select('volunteer_count').eq('id', id).single();
-      if (current && current.volunteer_count >= 10) {
+      const { data: current } = await supabase.from('requests').select('volunteer_count, required_volunteers, status').eq('id', id).single();
+      if (current && current.volunteer_count >= (current.required_volunteers || 4)) {
         return NextResponse.json({ success: false, error: 'Volunteer limit reached' }, { status: 400 });
       }
       
-      const { data, error } = await supabase.rpc('increment_volunteer', { row_id: id });
-      // If RPC is not available, we use manual update
-      if (error) {
-        const { data: updated, error: updateError } = await supabase
-          .from('requests')
-          .update({ volunteer_count: (current?.volunteer_count || 0) + 1 })
-          .eq('id', id)
-          .select();
-        
-        if (updateError) throw updateError;
-        return NextResponse.json({ success: true, data: updated[0] });
+      const newCount = (current?.volunteer_count || 0) + 1;
+      const reqVols = current?.required_volunteers || 4;
+      
+      let newStatus = current?.status;
+      if (newCount >= reqVols) {
+        newStatus = 'in_progress';
+      } else if (newCount > 0 && current?.status === 'waiting') {
+        newStatus = 'assigned';
       }
-      return NextResponse.json({ success: true, data });
+
+      const { data: updated, error: updateError } = await supabase
+        .from('requests')
+        .update({ volunteer_count: newCount, status: newStatus })
+        .eq('id', id)
+        .select();
+      
+      if (updateError) throw updateError;
+      return NextResponse.json({ success: true, data: updated[0] });
     }
 
     if (action === 'complete') {
       const { data, error } = await supabase
         .from('requests')
         .update({ status: 'completed' })
+        .eq('id', id)
+        .select();
+
+      if (error) throw error;
+      return NextResponse.json({ success: true, data: data[0] });
+    }
+
+    if (action === 'fulfill_resource') {
+      const { item, user_id, user_name } = body;
+      const { data: current } = await supabase.from('requests').select('fulfilled_resources').eq('id', id).single();
+      
+      const fulfilled = current?.fulfilled_resources || [];
+      if (fulfilled.some((r: any) => r.item === item)) {
+         return NextResponse.json({ success: false, error: 'Resource already fulfilled' }, { status: 400 });
+      }
+
+      fulfilled.push({ item, user_id, user_name });
+
+      const { data, error } = await supabase
+        .from('requests')
+        .update({ fulfilled_resources: fulfilled })
         .eq('id', id)
         .select();
 
