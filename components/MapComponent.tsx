@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents, ZoomContr
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { supabase } from '../lib/supabase';
-import { Activity, Clock, ShieldAlert, Users, CheckCircle, CheckCircle2, Info, Package, Crosshair, LocateFixed, Layers } from 'lucide-react';
+import { Activity, Clock, ShieldAlert, Users, CheckCircle, CheckCircle2, Info, Package, Crosshair, LocateFixed, Layers, X } from 'lucide-react';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'react-toastify';
 
@@ -97,6 +97,8 @@ export default function MapComponent() {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [nearbyCritical, setNearbyCritical] = useState<any[]>([]);
+  const [showAlertsBanner, setShowAlertsBanner] = useState(false);
+  const [dismissedAlerts, setDismissedAlerts] = useState<string[]>([]);
 
   // Haversine formula to calculate distance in km
   const getDistanceKm = (lat1: number, lon1: number, lat2: number, lon2: number) => {
@@ -393,34 +395,52 @@ export default function MapComponent() {
         </div>
       )}
 
-      {/* Nearby Critical Alerts Banner */}
+       {/* Nearby Critical Alerts Toggle/Badge */}
       {nearbyCritical.length > 0 && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] w-[90%] max-w-md transition-colors duration-300">
-          {nearbyCritical.map(req => (
-            <div key={`alert-${req.id}`} className="bg-red-600/90 backdrop-blur-md border border-red-400 p-3 rounded-2xl shadow-[0_0_30px_rgba(220,38,38,0.6)] mb-2 flex flex-col animate-in slide-in-from-top-4 fade-in duration-500 transition-colors duration-300">
-              <div className="flex items-center justify-between mb-2 transition-colors duration-300">
-                <span className="flex items-center gap-2 text-black dark:text-white font-black uppercase tracking-widest text-xs transition-colors duration-300">
-                  <span className="relative flex h-3 w-3 transition-colors duration-300">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75 transition-colors duration-300"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-red-200 transition-colors duration-300"></span>
-                  </span>
-                  🚨 Critical emergency nearby
-                </span>
-                <span className="text-black dark:text-white/80 text-[10px] font-bold transition-colors duration-300">
-                  {getDistanceKm(userLocation![0], userLocation![1], req.latitude, req.longitude).toFixed(1)} km away
-                </span>
+        <div className="absolute top-4 left-4 z-[1000] flex flex-col items-start gap-2 transition-colors duration-300">
+          {!showAlertsBanner ? (
+            <button 
+              onClick={() => setShowAlertsBanner(true)}
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full shadow-[0_0_20px_rgba(220,38,38,0.5)] flex items-center gap-2 animate-bounce transition-all active:scale-95 transition-colors duration-300"
+            >
+              <div className="relative flex h-3 w-3 transition-colors duration-300">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75 transition-colors duration-300"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-200 transition-colors duration-300"></span>
               </div>
-              <div className="flex items-center justify-between transition-colors duration-300">
-                <p className="text-black dark:text-white text-xs truncate max-w-[70%] transition-colors duration-300">{req.category}: {req.summary}</p>
-                <button 
-                  onClick={() => focusRequest(req)}
-                  className="px-3 py-1 bg-white text-red-600 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-red-50 transition-all active:scale-95 transition-colors duration-300"
-                >
-                  Locate
+              <span className="text-[10px] font-black uppercase tracking-widest transition-colors duration-300">{nearbyCritical.length} Critical Alerts Nearby</span>
+            </button>
+          ) : (
+            <div className="bg-red-600/95 backdrop-blur-md border border-red-400 p-4 rounded-3xl shadow-[0_0_40px_rgba(220,38,38,0.6)] w-[320px] max-w-[90vw] animate-in zoom-in-95 duration-300 transition-colors duration-300">
+              <div className="flex items-center justify-between mb-4 transition-colors duration-300">
+                <span className="text-black dark:text-white font-black uppercase tracking-widest text-[10px] transition-colors duration-300">🚨 Immediate Action Required</span>
+                <button onClick={() => setShowAlertsBanner(false)} className="text-black dark:text-white/60 hover:text-black dark:text-white transition-colors transition-colors duration-300">
+                  <X className="w-4 h-4 transition-colors duration-300" />
                 </button>
               </div>
+              <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar transition-colors duration-300">
+                {nearbyCritical.map(req => (
+                  <div key={`alert-${req.id}`} className="bg-white/10 p-3 rounded-2xl border border-white/5 transition-colors duration-300">
+                    <div className="flex justify-between items-start mb-1 transition-colors duration-300">
+                      <span className="text-black dark:text-white font-bold text-xs transition-colors duration-300">{req.category}</span>
+                      <span className="text-black dark:text-white/70 text-[9px] font-mono transition-colors duration-300">
+                        {getDistanceKm(userLocation![0], userLocation![1], req.latitude, req.longitude).toFixed(1)} km
+                      </span>
+                    </div>
+                    <p className="text-black dark:text-white/80 text-[10px] line-clamp-2 mb-3 transition-colors duration-300">{req.summary}</p>
+                    <button 
+                      onClick={() => {
+                        focusRequest(req);
+                        setShowAlertsBanner(false);
+                      }}
+                      className="w-full py-2 bg-white text-red-600 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-50 transition-all active:scale-95 transition-colors duration-300"
+                    >
+                      Locate on Map
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          )}
         </div>
       )}
 
