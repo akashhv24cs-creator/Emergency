@@ -391,6 +391,22 @@ function VictimDashboard({ user }: { user: any }) {
     }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
   };
 
+  const markAsSolved = async (id: string) => {
+    try {
+      const res = await fetch('/api/requests', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'complete', id })
+      });
+      if (res.ok) {
+        toast.success("Incident marked as solved!");
+        fetchMyRequests();
+      }
+    } catch (err) {
+      toast.error("Failed to update status");
+    }
+  };
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 transition-colors duration-300">
       <div className="bg-red-950/30 border border-red-500/20 p-6 rounded-3xl backdrop-blur-md transition-colors duration-300">
@@ -551,6 +567,19 @@ function VictimDashboard({ user }: { user: any }) {
                       <img src={req.image_url} alt="Incident" className="w-full h-32 object-cover rounded-xl transition-colors duration-300" />
                     </div>
                   )}
+                  
+                  <div className="flex justify-between items-center mt-4 border-t border-white/5 pt-3 transition-colors duration-300">
+                    <div className="flex items-center gap-2 transition-colors duration-300">
+                      <Users className="w-3 h-3 text-blue-400 transition-colors duration-300" />
+                      <span className="text-[10px] font-bold text-blue-400 transition-colors duration-300">{req.volunteer_count || 0} Helpers</span>
+                    </div>
+                    <button 
+                      onClick={() => markAsSolved(req.id)}
+                      className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-black dark:text-white text-[10px] font-black uppercase rounded-lg shadow-lg transition-all active:scale-95 flex items-center gap-1 transition-colors duration-300"
+                    >
+                      <CheckCircle2 className="w-3 h-3 transition-colors duration-300" /> Mark Solved
+                    </button>
+                  </div>
                 </div>
               ))
             )}
@@ -855,6 +884,12 @@ function UnifiedUserDashboard({ user, view, setView }: { user: any, view: 'missi
                             className="w-full py-3 bg-gray-100 dark:bg-slate-800 hover:bg-slate-700 text-emerald-400 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 transition-colors duration-300"
                           >
                             <MessageSquare className="w-3 h-3 transition-colors duration-300" /> Situation Room
+                          </button>
+                          <button 
+                            onClick={() => updateStatus(mission.id, 'completed', 'complete')}
+                            className="w-full py-4 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-widest border border-emerald-500/20 transition-all transition-colors duration-300"
+                          >
+                            Mark as Completed
                           </button>
                         </>
                       )}
